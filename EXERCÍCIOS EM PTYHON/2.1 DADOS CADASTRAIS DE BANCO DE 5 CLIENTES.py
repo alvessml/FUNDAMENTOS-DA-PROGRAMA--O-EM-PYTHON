@@ -12,7 +12,7 @@ for _ in range(5):
     clientes.append([num_conta, nome, saldo, op])
     print("-" * 60)
 
-#Adicionando os dados na matriz 5x5
+# Adicionando os dados na matriz 5x5
 for i in range(5):
     for j in range(5):
         if i == j:
@@ -21,7 +21,7 @@ for i in range(5):
             matriz[i][j] = clientes[i][2]
         elif clientes[i][3] == 'D':
             matriz[i][j] = -clientes[i][2]
-        
+
 print("\n Martriz de movimento bancário: ")
 for linha in (matriz):
     print(linha)
