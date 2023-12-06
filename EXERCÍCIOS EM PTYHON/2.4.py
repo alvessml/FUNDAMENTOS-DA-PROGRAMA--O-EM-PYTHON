@@ -5,9 +5,9 @@ def tabela_classicação():
 
     tabela = []
 
-    #tabela.append(["L", "Time       ", "P", "V", "E", "D"])
+    #tabela.insert(0, ["L", "Time       ", "P", "V", "E", "D"])
 
-    for _ in range(12):
+    for _ in range(2):
         posição = int(input("Posição: "))
         nome = input("Nome: ")
         pontos = int(input("Pontos: "))
@@ -21,6 +21,8 @@ def tabela_classicação():
 
     tabela.sort(key=lambda x: x[2], reverse=True)
 
+    tabela_topo = ["L", "Time       ", "P", "V", "E", "D"]
+
     l = len(tabela)
     c = len(tabela[0])
 
@@ -29,28 +31,26 @@ def tabela_classicação():
             print(tabela[i][j], end="\t")
         print()
         
-    return tabela_classicação
+    return tabela_classicação, tabela_topo
 
-def ordenar_resultados(tabela):
+def ordenar_resultados(tabela, tabela_topo):
     #Irá organizar a tabela por meio dos pontos!
-    tabela.sort(key=lambda x: x[2], reverse=True)
+
+    tabela.insert(0, tabela_topo)
 
     # a) campeão do brasileirão 
-    campeao = tabela[0][0]
+    campeao = tabela[1][1]
 
     # b) 5 primeiros colocados para a libertadores
-    libertadores = [tabela[i][0] for i in range(5)]
+    libertadores = [tabela[i][0] for i in range(1, 6)]
 
     # c) 5 seguintes para a copa sul-americano
-    sul_americana = [tabela[i][0] for i in range(5, 10)]
+    sul_americana = [tabela[i][0] for i in range(6, 11)]
 
     # d) 2 últimos que serão rebaixados
-    rebaixados = [tabela[i][0] for i in range(10, 12)]
+    rebaixados = [tabela[i][0] for i in range(11, 13)]
 
     return campeao, libertadores, sul_americana, rebaixados
-
-def barra(tabela):
-     tabela.append(["L", "Time       ", "P", "V", "E", "D"])
 
 
 tabela_classicação()
