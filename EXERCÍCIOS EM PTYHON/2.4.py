@@ -7,7 +7,7 @@ def tabela_classicação():
 
     #tabela.insert(0, ["L", "Time       ", "P", "V", "E", "D"])
 
-    for _ in range(2):
+    for _ in range(3):
         posição = int(input("Posição: "))
         nome = input("Nome: ")
         pontos = int(input("Pontos: "))
@@ -21,8 +21,6 @@ def tabela_classicação():
 
     tabela.sort(key=lambda x: x[2], reverse=True)
 
-    tabela_topo = ["L", "Time       ", "P", "V", "E", "D"]
-
     l = len(tabela)
     c = len(tabela[0])
 
@@ -33,10 +31,13 @@ def tabela_classicação():
         
     return tabela_classicação, tabela_topo
 
-def ordenar_resultados(tabela, tabela_topo):
-    #Irá organizar a tabela por meio dos pontos!
+def ordenar_resultados(tabela):
+
+    tabela_topo = ["L", "Time       ", "P", "V", "E", "D"]
 
     tabela.insert(0, tabela_topo)
+
+    #Irá organizar a tabela por meio dos pontos!
 
     # a) campeão do brasileirão 
     campeao = tabela[1][1]
@@ -51,6 +52,7 @@ def ordenar_resultados(tabela, tabela_topo):
     rebaixados = [tabela[i][0] for i in range(11, 13)]
 
     return campeao, libertadores, sul_americana, rebaixados
+
 
 
 tabela_classicação()
