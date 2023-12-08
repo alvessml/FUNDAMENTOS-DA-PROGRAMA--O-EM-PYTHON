@@ -1,39 +1,44 @@
-tabela = []
+def usuario():
+    cadastro = []
 
-for x in range(6):
-    posição = []
-    nome = input("Nome: ")
-    pontos = int(input("Pontos: "))
-    jogos = int(input("Q° jogos: "))
-    vitorias = int(input("Vitórias: "))
-    empates = int(input("Empates: "))
-    derrotas = int(input("Derrotas: "))
+    for _ in range(12):
+        nome = input("Time: ")
+        pontos = int(input("Pontos: "))
+        jogos = int(input("Q° jogos: "))
+        vitorias = int(input("Vitórias: "))
+        empates = int(input("Empates: "))
+        derrotas = int(input("Derrotas: "))
 
-    tabela.append([posição, nome, pontos, jogos, vitorias, empates, derrotas])
+        cadastro.append([nome, pontos, jogos, vitorias, empates, derrotas])
 
-    #maior = pontos
+        print("-=" * 30)
 
-    #if pontos > maior
-    print("-="*30)
+    return cadastro
 
-#-----------------------------------------------------------#
-tabela.sort(key=lambda x: x[2], reverse=True)
+def organizacao(cadastro):
+    cadastro.sort(key=lambda x: x[2], reverse=True)
 
-tabela_topo = ["L", "Time       ", "P", "V", "E", "D"]
+    posicao = [i + 1 for i in range(12)]
 
-tabela.insert(0, tabela_topo)
+    tabela = [["L"] + ["Time", "P", "J", "V", "E", "D"]] + [[posicao[i]] + linha for i, linha in enumerate(cadastro)]
 
-l = len(tabela)
-c = len(tabela[0])
+    return tabela
 
-for i in range(l):
-    for j in range(c):
-        print(tabela[i][j], end="\t")
-    print()
+def classificacao(tabela):
+    print(f"\n Resultados do brasileirão: ")
+    print(f"a) Campeão do brasileiro: {tabela[1][1]}")
+    print(f"b) 5 primeiros que irão para a libertadores: {', '.join([tabela[i][1] for i in range(1, 6)])}")
+    print(f"c) 5 seguintes que irão para a sul-americana: {', '.join([tabela[i][1] for i in range(6, 11)])}")
+    print(f"d) Os dois últimos que serão rebaixados: {', '.join([tabela[i][1] for i in range(11, 13)])}")
 
-#-----------------------------------------------------------#
-print(f"\n Resultados do brasileirão: ")
-print(f"a) Campeão do brasileiro: {tabela[1][1]}")
-print(f"b) 5 primeiros que irão para a libertadores: {", ".join([tabela[i][0] for i in range(1, 2)])}")
-print(f"5 seguintes que irão para a sul-americana: {", ".join([tabela[i][0] for i in range(2, 3)])}")
-print(f"Os dois últimos que serão rebaixados: {", ".join([tabela[i][0] for i in range(3, 6)])}")
+def main():
+    cadastro = usuario()
+    tabela = organizacao(cadastro)
+    classificacao(tabela)
+
+    # Exibindo a tabela
+    for linha in tabela:
+        print("\t".join(map(str, linha)))
+
+if __name__ == "__main__":
+    main()

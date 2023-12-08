@@ -1,7 +1,7 @@
 def usuario():
     cadastro = []
 
-    for x in range(12):
+    for _ in range(12):
         nome = input("Time: ")
         pontos = int(input("Pontos: "))
         jogos = int(input("Q° jogos: "))
@@ -17,20 +17,31 @@ def usuario():
 
 def organização(cadastro):
     cadastro.sort(key=lambda x: x[1], reverse=True)
-    
-    l = len(tabela)
-    c = len(tabela[0])
 
-    for i in range(l):
-        for j in range(c):
-            print(tabela[i][j], end="\t")
-        print()
-    return
+    posição = [i + 1 for i in range(12)]
 
-def tabela(cadastro):
+    tabela = [["L", "Time", "P", "J", "V", "E", "D"]] + [[posição[i]] + linha for i, linha in enumerate(cadastro)]
+
+    return tabela
+
+def classificação(tabela):
     print(f"\n Resultados do brasileirão: ")
-    print(f"a) Campeão do brasileiro: {cadastro[1][1]}")
-    print(f"b) 5 primeiros que irão para a libertadores: {", ".join([cadastro[i][0] for i in range(1, 2)])}")
-    print(f"5 seguintes que irão para a sul-americana: {", ".join([cadastro[i][0] for i in range(2, 3)])}")
-    print(f"Os dois últimos que serão rebaixados: {", ".join([cadastro[i][0] for i in range(3, 6)])}")
-    return 
+    print(f"\na) Campeão do brasileiro: {tabela[1][1]}")
+    print(f"\nb) 5 primeiros que irão para a libertadores: {", ".join([tabela[i][1] for i in range(1, 6)])}")
+    print(f"\nc) 5 seguintes que irão para a sul-americana: {", ".join([tabela[i][1] for i in range(6, 11)])}")
+    print(f"\nd)Os dois últimos que serão rebaixados: {", ".join([tabela[i][1] for i in range(11, 13)])}")
+
+
+# Conduzindo o programa com a sequência abaixo:
+def main():
+    cadastro = usuario()
+    tabela = organização(cadastro)
+
+    #Exibir na tela:
+    for linha in (tabela):
+        print("{:<5} {:<20} {:<3} {:<3} {:<3} {:<3} {:<3}".format(*linha))
+        # map(str, linha): Converte cada elemento da linha para uma string, # pois join espera strings como argumentos.
+
+    classificação(tabela)
+
+main()
