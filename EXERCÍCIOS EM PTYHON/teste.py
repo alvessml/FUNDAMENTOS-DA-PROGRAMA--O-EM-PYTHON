@@ -32,8 +32,8 @@ for i in range(l):
     print()
 
 #-----------------------------------------------------------#
-print(f"\n Resultados do brasileirão: {tabela[1][1]}")
-print(f"a) Campeão do brasileiro: {campeao}")
+print(f"\n Resultados do brasileirão: ")
+print(f"a) Campeão do brasileiro: {tabela[1][1]}")
 print(f"b) 5 primeiros que irão para a libertadores: {", ".join([tabela[i][0] for i in range(1, 2)])}")
 print(f"5 seguintes que irão para a sul-americana: {", ".join([tabela[i][0] for i in range(2, 3)])}")
 print(f"Os dois últimos que serão rebaixados: {", ".join([tabela[i][0] for i in range(3, 6)])}")
