@@ -1,5 +1,11 @@
-from datetime import date
+from datetime import datetime
 
-hoje = date.today()
+data_atual = datetime.now().date()
 
-print(hoje)
+dia = data_atual.day
+mes = data_atual.month
+ano = data_atual.year
+
+print(dia)
+print(mes)
+print(ano)

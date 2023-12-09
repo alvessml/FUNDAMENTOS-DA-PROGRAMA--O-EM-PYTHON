@@ -8,11 +8,16 @@ def usuario():
     return dia, mes, ano
 
 def organização(dia, mes, ano):
-    hoje = date.today()
+    data_atual = date.today()
 
+    day = data_atual.day
+    month = data_atual.month
+    year = data_atual.year
+
+    dias
+
+def main():
+    usuario()
     
 
-    dias_faltando = map() 
-
-
-    return dias_faltando
+main()
