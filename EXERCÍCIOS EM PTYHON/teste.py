@@ -4,11 +4,17 @@ def q_cédulas():
     cédulas = []
     total = valor
     céd_disponíveis = 200
+    tot_ced = 0   
     while True:
         if total > céd_disponíveis:
             total -= céd_disponíveis
             cédulas.append(céd_disponíveis)
+            tot_ced += 1    
         else:
+            if tot_ced > 0:
+                print(f"Total de {tot_ced} cédulas de R{céd_disponíveis}")
+            if céd_disponíveis == 100:
+                céd_disponíveis = 50
             if céd_disponíveis == 50:
                 céd_disponíveis = 20
             elif céd_disponíveis == 20:
@@ -17,7 +23,8 @@ def q_cédulas():
                 céd_disponíveis = 5
             elif céd_disponíveis == 5:
                 céd_disponíveis = 2
-            if total < 4:
+            tot_ced = 0
+            if total == 0:
                 break
     return cédulas
 def main():
