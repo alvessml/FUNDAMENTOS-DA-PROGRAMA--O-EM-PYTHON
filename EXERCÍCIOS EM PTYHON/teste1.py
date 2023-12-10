@@ -1,39 +1,26 @@
-def caixa_eletronico():
-    valor_saque = int(input("Digite o quanto você deseja tirar do saldo (acima de R$3,99): R$"))
-
+def calcular_cedulas(valor):
     cedulas = [200, 100, 50, 20, 10, 5, 2]
-    notas = []
+    quantidades = []
 
-    for nota in cedulas:
-        while valor_saque >= nota:
-            if valor_saque % 2 == 0 and valor_saque == 6 :
-                valor_saque -= 2
-                notas.append(2)
-                break
-            elif valor_saque % 2 == 0 and valor_saque == 8 :
-                valor_saque -= 2
-                notas.append(2)
-                break
-            elif valor_saque % 2 == 1 and 10 < valor_saque < 13:
-                valor_saque -= 5
-                notas.append(5)
-                break
-            elif valor_saque % 2 == 0:
-                valor_saque -= nota
-                notas.append(nota)
-            elif valor_saque % 2 == 1:
-                valor_saque -= nota
-                notas.append(nota)
-    return notas
+    for cedula in cedulas:
+        qtd_cedulas = valor // cedula
+        quantidades.append(qtd_cedulas)
+        valor %= cedula
+
+    return quantidades
 
 def main():
-    notas = caixa_eletronico()
-    
-    if notas:
-        print("Notas retiradas:", notas)
+    valor_saque = int(input("Digite o valor que você deseja sacar (a partir de R$4): R$"))
+
+    if valor_saque < 4:
+        print("Valor inválido. O saque mínimo é R$4.")
     else:
-        print("Valor de saque inválido. Certifique-se de que é acima de R$3,99 e um valor permitido.")
+        quantidades = calcular_cedulas(valor_saque)
+
+        print(f"Para sacar R${valor_saque}, você precisará de:")
+        for cedula, quantidade in zip([200, 100, 50, 20, 10, 5, 2], quantidades):
+            if quantidade > 0:
+                print(f"{quantidade} cédula(s) de R${cedula}")
 
 if __name__ == "__main__":
     main()
-
