@@ -1,26 +1,13 @@
-def calcular_cedulas(valor):
-    cedulas = [200, 100, 50, 20, 10, 5, 2]
-    quantidades = []
+# Criando uma matriz 3x3 como exemplo
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
 
-    for cedula in cedulas:
-        qtd_cedulas = valor // cedula
-        quantidades.append(qtd_cedulas)
-        valor %= cedula
+# Escolhendo a coluna que você deseja imprimir (por exemplo, coluna 1)
+coluna_desejada = 1
 
-    return quantidades
-
-def main():
-    valor_saque = int(input("Digite o valor que você deseja sacar (a partir de R$4): R$"))
-
-    if valor_saque < 4:
-        print("Valor inválido. O saque mínimo é R$4.")
-    else:
-        quantidades = calcular_cedulas(valor_saque)
-
-        print(f"Para sacar R${valor_saque}, você precisará de:")
-        for cedula, quantidade in zip([200, 100, 50, 20, 10, 5, 2], quantidades):
-            if quantidade > 0:
-                print(f"{quantidade} cédula(s) de R${cedula}")
-
-if __name__ == "__main__":
-    main()
+# Imprimindo a coluna desejada
+for linha in matriz:
+    print(linha[coluna_desejada])
